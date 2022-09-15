@@ -1,5 +1,3 @@
-
-
 module.exports = {
 	data: 
     {
@@ -20,15 +18,20 @@ module.exports = {
     },
 
 	async execute(interaction) {
-        if (await interaction.getSubcommand()) {
+        let subcmd = await interaction.options.getSubcommand();
 
+        if (subcmd !== "on" && subcmd !== "off") {
+            return;
         }
+
 		await interaction.client.db.collection("guilds").updateOne({ _id: interaction.guild.id },
             {
                 $set: {
-                    levelling: args[0]
+                    levelling: subcmd
                 }
             }
         );
+
+        // Respond to user
 	},
 };
