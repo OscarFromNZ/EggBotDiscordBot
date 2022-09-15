@@ -1,20 +1,23 @@
-const { SlashCommandBuilder } = require('discord.js');
+
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('togglelevelling')
-		.setDescription('Toggles the levelling system!')
-
-        .addSubcommand(subcommand =>
-            subcommand
-                .setName('on')
-                .setDescription('Turn the leveling system on')
-        )
-        .addSubcommand(subcommand =>
-            subcommand
-                .setName('off')
-                .setDescription('Turn the leveling system off')
-        ),
+	data: 
+    {
+        name: "toggleleveling",
+        description: "Toggle the leveling system",
+        options: [
+            {
+                name: "on",
+                description: "Toggle leveling to on",
+                type: 1
+            },
+            {
+                name: "off",
+                description: "Toggle leveling to off",
+                type: 1
+            }
+        ]
+    },
 
 	async execute(interaction) {
         if (await interaction.getSubcommand()) {
