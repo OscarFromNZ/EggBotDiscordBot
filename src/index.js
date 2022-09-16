@@ -16,6 +16,7 @@ startup(client);
 
 client.once('ready', async (client) => {
     console.log(`✅ ${client.user.tag} is now online!`);
+    await require('./dashboard/app')(client);
 });
 
 client.on('error', async (err) => {

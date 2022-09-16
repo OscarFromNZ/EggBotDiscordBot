@@ -17,7 +17,7 @@ module.exports = {
         ]
     },
 
-	async execute(interaction) {
+	async execute(client, interaction) {
         let subcmd = await interaction.options.getSubcommand();
 
         if (subcmd !== "on" && subcmd !== "off") {

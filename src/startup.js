@@ -51,7 +51,7 @@ module.exports = async (client) => {
 
     await fs.readdirSync(`./src/commands`).forEach(file => {
         const command = require(`./commands/${file}`);
-        commands.push(command.data.toJSON());
+        commands.push(command.data);
         client.commands.set(command.data.name, command);
     });
 
@@ -62,7 +62,7 @@ module.exports = async (client) => {
     (async () => {
         try {
             await rest.put(
-                Routes.applicationCommands(CLIENT_ID), {
+                Routes.applicationCommands('927286445671055370'), {
                 body: commands
             },
             );
