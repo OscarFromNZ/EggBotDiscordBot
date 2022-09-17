@@ -14,7 +14,8 @@ module.exports = {
                 description: "Toggle leveling to off",
                 type: 1
             }
-        ]
+        ],
+        permissions: 2 // Administrator
     },
 
 	async execute(client, interaction) {

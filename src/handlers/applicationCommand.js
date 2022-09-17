@@ -4,7 +4,6 @@ module.exports = async (client, interaction) => {
 
     // Check permissions
 
-
-    // Run the command
+    // Run the command  
     await command.execute(client, interaction);
 }
