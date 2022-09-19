@@ -6,4 +6,4 @@ module.exports = async (client, interaction) => {
 
     // Run the command  
     await command.execute(client, interaction);
-}
+}   
