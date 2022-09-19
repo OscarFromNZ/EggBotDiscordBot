@@ -25,7 +25,7 @@ module.exports = {
             return;
         }
 
-		await interaction.client.db.collection("guilds").updateOne({ _id: interaction.guild.id },
+		await interaction.client.db.collection("guilds").updateOne({ guild: interaction.guild.id },
             {
                 $set: {
                     levelling: subcmd

@@ -1,7 +1,9 @@
 const getEventFiles = require('./getEventFiles');
-const getGuildById = require('./getGuildById');
+const getOrCreateGuild = require('./getOrCreateGuild');
+const getOrCreateUserInGuild = require('./getOrCreateUserInGuild');
 
 module.exports = {
     getEventFiles: getEventFiles,
-    getGuildById: getGuildById,
+    getOrCreateGuild: getOrCreateGuild,
+    getOrCreateUserInGuild: getOrCreateUserInGuild
 }
