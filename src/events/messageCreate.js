@@ -7,7 +7,6 @@ module.exports = {
         // Adding one message to the member & saving it
         let memberDoc = await client.functions.getOrCreateUserInGuild(client, message.guild.id, message.author.id);
         memberDoc.messages = await memberDoc?.messages + 1;
-
         await client.functions.saveMember(client, memberDoc);
 
         if (memberDoc.messages + 1 == 100) {
