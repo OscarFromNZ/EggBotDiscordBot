@@ -1,19 +1,24 @@
 module.exports = async (client, guildId, memberId) => {
-    // Get the guild doc
+    // Get the member doc
     let memberDoc = await client.db.collection("memberInGuild").findOne(
         { guild: guildId },
         { member: memberId }
     );
 
-    // If there is no guild doc, make a guild doc
+    // If there is no member doc, make a member doc
     if (!memberDoc) {
-        await client.db.collection("memberInGuild").insertOne({ guild: guildId, member: memberId }, async function (err, res) {
+        let memberDocbase = {
+            guild: guildId,
+            member: memberId,
+            messages: 0
+        }
+        await client.db.collection("memberInGuild").insertOne(memberDocbase, async function (err, res) {
             if (err) {
                 console.log(err);
             }
             console.log("✅ Doc made");
 
-            // Set the guild doc again
+            // Set the member doc again
             memberDoc = await client.db.collection("memberInGuild").findOne({
                 $and: [
                     { guild: guildId },

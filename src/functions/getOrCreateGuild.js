@@ -6,7 +6,11 @@ module.exports = async (client, guildId) => {
 
     // If there is no guild doc, make a guild doc
     if (!guildDoc) {
-        await client.db.collection("guilds").insertOne({guild: guildId}, async function (err, res) {
+        let guildDocBase = {
+            guild: guildId,
+            levelling: 'on'
+        }
+        await client.db.collection("guilds").insertOne(guildDocBase, async function (err, res) {
             if (err) {
                 console.log(err);
             }
