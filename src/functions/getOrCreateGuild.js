@@ -1,3 +1,7 @@
+/**
+    * @INFO Gets of creates guild with MongoDB using the guild's id
+*/
+
 module.exports = async (client, guildId) => {
     // Get the guild doc
     let guildDoc = await client.db.collection("guilds").findOne({

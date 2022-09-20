@@ -1,3 +1,7 @@
+/**
+    * @INFO Basic handler for interactions, calls the correct files to handle each type of interaction
+*/
+
 module.exports = {
     name: 'interactionCreate',
     once: false,

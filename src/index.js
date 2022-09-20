@@ -1,3 +1,7 @@
+/**
+    * @INFO This file gets called on startup, it creates the client and calls the init/startup function
+*/
+
 const {
     Client,
     Intents,
