@@ -18,7 +18,6 @@ module.exports = {
 
         if (memberDoc.messages + 1 == 100) {
             await message.react('🌟');
-            // TODO: React with a custom "100" emoji maybe?
         };
 
         if (memberDoc.messages + 1 == 1000) {
