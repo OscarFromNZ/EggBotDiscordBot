@@ -1,5 +1,5 @@
 /**
-    * @INFO This command removes messages from a user
+    * @INFO This command lets admins or above remove messages from a user
 */
 
 module.exports = {

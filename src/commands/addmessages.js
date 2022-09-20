@@ -1,5 +1,5 @@
 /**
-    * @INFO This command adds messages to a user
+    * @INFO This command lets an admin or above add messages to a user
 */
 
 module.exports = {
