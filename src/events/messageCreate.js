@@ -9,6 +9,9 @@ module.exports = {
         // If the message was sent in a DM // There is no guild found, return
         if (!message.guild) return;
 
+        // If the message was sent by a bot, return
+        if (message.author.bot) return;
+
         //let guild = await client.functions.getOrCreateGuild(client, message.guild.id);
 
         // Adding one message to the member & saving it
