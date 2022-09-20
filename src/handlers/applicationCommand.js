@@ -13,6 +13,7 @@ module.exports = async (client, interaction) => {
     interaction.respond = respond;
 
     // Check permissions
+    
 
     // Run the command  
     await command.execute(client, interaction);

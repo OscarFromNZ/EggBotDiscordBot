@@ -6,7 +6,7 @@ module.exports = {
 	data: {
         name: "addmessages",
         description: "Add messages to a user",
-        permissions: 2, // Admin
+        permission: 2, // Admin
         options: [
             {
                 name: "user",

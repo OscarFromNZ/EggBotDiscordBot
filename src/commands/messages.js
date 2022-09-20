@@ -6,7 +6,7 @@ module.exports = {
 	data: {
         name: "messages",
         description: "Check the amount of messages a user has",
-        permissions: 0, // Member
+        permission: 0, // Member
         options: [
             {
                 name: "user",
@@ -25,6 +25,6 @@ module.exports = {
         let memberDoc = await client.functions.getOrCreateUserInGuild(client, interaction.guild.id, user.id);
 
         // Reply with the amount of messages the target user has
-        await interaction.respond(interaction, `<@<${user.id}> currently has ${memberDoc.messages} in this server`);
+        await interaction.respond(interaction, `<@${user.id}> currently has ${memberDoc.messages} in this server`);
     }
 }
