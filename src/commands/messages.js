@@ -19,12 +19,12 @@ module.exports = {
 
     async execute(client, interaction) {
         // Gets the user given, either the option or the user running the command
-        let user = await interaction.options.getUser() || interaction.user;
+        let user = await interaction.options.getUser('user') || interaction.user;
         
         // Loads the memberDoc from MongoDB (MongoDB is awesome ^-^);
         let memberDoc = await client.functions.getOrCreateUserInGuild(client, interaction.guild.id, user.id);
 
         // Reply with the amount of messages the target user has
-        await interaction.respond(interaction, memberDoc.messages);
+        await interaction.respond(interaction, `<@<${user.id}> currently has ${memberDoc.messages} in this server`);
     }
 }
