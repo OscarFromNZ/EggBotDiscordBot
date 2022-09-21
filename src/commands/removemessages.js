@@ -7,6 +7,7 @@ module.exports = {
         name: "removemessages",
         description: "Remove messages from a user",
         permission: 2, // Admin
+        isDangerous: false,
         options: [
             {
                 name: "user",

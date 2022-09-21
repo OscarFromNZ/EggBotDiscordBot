@@ -7,6 +7,7 @@ module.exports = {
         name: "messages",
         description: "Check the amount of messages a user has",
         permission: 0, // Member
+        isDangerous: false,
         options: [
             {
                 name: "user",
