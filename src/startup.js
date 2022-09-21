@@ -31,6 +31,7 @@ module.exports = async (client) => {
         info: ':information_source:',
         arrowUp: ':arrow_up:',
         star: ':star:',
+        phew: ':face_exhaling:'
     };
 
     client.promomessages = [
