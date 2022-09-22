@@ -1,11 +1,11 @@
 /**
-    * @INFO This command lets admins or above remove messages from a user
+    * @INFO This command lets a user steal eggs from a user
 */
 
 module.exports = {
 	data: {
-        name: "removemessages",
-        description: "Remove messages from a user",
+        name: "stealeggs",
+        description: "Steals eggs from a user",
         permission: 2, // Admin
         isDangerous: false,
         options: [
@@ -16,7 +16,7 @@ module.exports = {
                 required: true
             },
             {
-                name: "messages",
+                name: "risk",
                 description: "The amount of messages to remove from the user",
                 type: 10,
                 required: true
@@ -25,20 +25,22 @@ module.exports = {
     },
 
     async execute(client, interaction) {
+        return;
         // Gets the user given, either the option or the user running the command
         let user = await interaction.options.getUser('user');
         
         // Loads the memberDoc from MongoDB (MongoDB is awesome ^-^);
-        let memberDoc = await client.functions.getOrCreateUserInGuild(client, interaction.guild.id, user.id);
+        let userDoc = await client.functions.getOrCreateUser(client, user.id);
 
-        // Adds x amount of messages to user
-        memberDoc.messages = await memberDoc?.messages - await interaction.options.getNumber('messages');
+        // TODO add math
+
+        let amount;
 
         // Saves
-        await client.functions.saveMember(client, memberDoc);
+        await client.functions.saveUser(client, userDoc);
 
         // Reply with the amount of messages the target user has
-        await interaction.respond(interaction, `Done, <@${user.id}> now has ${memberDoc.messages} messages`);
+        await interaction.respond(interaction, `Hehe, you just stole ${amount} from <@${user.id}>`);
         
     }
 }

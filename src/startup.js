@@ -20,7 +20,7 @@ module.exports = async (client) => {
 
     // Storing mydb into client.db so I can use it easily
     var mongoClient = await MongoClient.connect(process.env.MONGO_URI);
-    client.db = await mongoClient.db("mydb");
+    client.db = await mongoClient.db("eggbot");
 
     client.emotes = {
         warning: ':warning:',

@@ -5,14 +5,14 @@
 
 const getEventFiles = require('./getEventFiles');
 const getOrCreateGuild = require('./getOrCreateGuild');
-const getOrCreateUserInGuild = require('./getOrCreateUserInGuild');
+const getOrCreateUser = require('./getOrCreateUser');
 const saveGuild = require('./saveGuild');
-const saveMember = require('./saveMember');
+const saveUser = require('./saveUser');
 
 module.exports = {
     getEventFiles: getEventFiles,
     getOrCreateGuild: getOrCreateGuild,
-    getOrCreateUserInGuild: getOrCreateUserInGuild,
+    getOrCreateUser: getOrCreateUser,
     saveGuild: saveGuild,
-    saveMember: saveMember
+    saveUser: saveUser
 }

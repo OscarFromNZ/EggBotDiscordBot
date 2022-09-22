@@ -5,7 +5,7 @@
 module.exports = async (client, currentGuildDoc) => {
     await client.db.collection("guilds").replaceOne(
         {
-            guild: currentGuildDoc.guild
+            id: currentGuildDoc.id
         },
         currentGuildDoc
     );
