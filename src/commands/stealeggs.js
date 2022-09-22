@@ -6,7 +6,7 @@ module.exports = {
 	data: {
         name: "stealeggs",
         description: "Steals eggs from a user",
-        permission: 2, // Admin
+        permission: 0, // Member
         isDangerous: false,
         options: [
             {
