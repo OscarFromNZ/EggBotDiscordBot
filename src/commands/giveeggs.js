@@ -28,7 +28,7 @@ module.exports = {
         // Gets the user given, either the option or the user running the command
         let user = await interaction.options.getUser('user');
         
-        // Loads the memberDoc from MongoDB (MongoDB is awesome ^-^);
+        // Loads the userDoc from MongoDB (MongoDB is awesome ^-^);
         let recieverDoc = await client.functions.getOrCreateUser(client, user.id);
         let giverDoc = await client.functions.getOrCreateUser(client, interaction.user.id);
 

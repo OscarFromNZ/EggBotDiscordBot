@@ -8,19 +8,19 @@ module.exports = async (client, userId) => {
         { id: userId },
     );
 
-    // If there is no member doc, make a member doc
-    if (!memberDoc) {
-        let memberDocbase = {
+    // If there is no user doc, make a user doc
+    if (!userDoc) {
+        let userDocBase = {
             id: userId,
             eggs: 0,
         }
-        await client.db.collection("users").insertOne(memberDocbase, async function (err, res) {
+        await client.db.collection("users").insertOne(userDocBase, async function (err, res) {
             if (err) {
                 console.log(err);
             }
             console.log("✅ Doc made");
 
-            // Set the member doc again
+            // Set the user doc again
             userDoc = await client.db.collection("users").findOne(
                 { id: userId },
             );
