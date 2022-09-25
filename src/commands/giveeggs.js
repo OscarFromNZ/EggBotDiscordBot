@@ -40,15 +40,15 @@ module.exports = {
         };
 
         // Adds x amount of eggs to user | Removes x amount of eggs from original user
-        recieverDoc.eggs = recieverDoc.eggs + amount;
-        giverDoc.eggs = giverDoc.eggs - amount;
+        recieverDoc.eggs = await recieverDoc.eggs + amount;
+        giverDoc.eggs = await giverDoc.eggs - amount;
 
         // Saves
         await client.functions.saveUser(client, recieverDoc);
         await client.functions.saveUser(client, giverDoc);
 
         // Reply
-        await interaction.respond(interaction, `Done, <@${recieverDoc.id}> now has ${recieverDoc.eggs + amount} & <@${giverDoc.id}> now has ${giverDoc.eggs - amount}`);
+        await interaction.respond(interaction, `Done, <@${recieverDoc.id}> now has ${recieverDoc.eggs + amount} eggs & <@${giverDoc.id}> now has ${giverDoc.eggs - amount} eggs`);
         
     }
 }
