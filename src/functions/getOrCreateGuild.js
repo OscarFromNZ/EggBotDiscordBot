@@ -25,6 +25,10 @@ module.exports = async (client, guildId) => {
             });
         });
     };
-    
-    return await guildDoc;
+
+    //return await guildDoc;
+
+    return await new Promise( async (resolve, reject) => {
+        resolve(guildDoc);
+    });
 };

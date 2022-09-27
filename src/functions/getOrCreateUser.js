@@ -27,5 +27,9 @@ module.exports = async (client, userId) => {
         });
     };
 
-    return await userDoc;
+    //return await userDoc;
+
+    return await new Promise( async (resolve, reject) => {
+        resolve(userDoc);
+    });
 };
