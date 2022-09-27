@@ -6,8 +6,10 @@
 const getEventFiles = require('./getEventFiles');
 const getOrCreateGuild = require('./getOrCreateGuild');
 const getOrCreateUser = require('./getOrCreateUser');
+const getOrCreateMember = require('./getOrCreateMember');
 const saveGuild = require('./saveGuild');
 const saveUser = require('./saveUser');
+const saveMember = require('./saveMember');
 const addOrRemoveEggs = require('./addOrRemoveEggs');
 
 module.exports = {
@@ -16,5 +18,7 @@ module.exports = {
     getOrCreateUser: getOrCreateUser,
     saveGuild: saveGuild,
     saveUser: saveUser,
-    addOrRemoveEggs: addOrRemoveEggs
+    addOrRemoveEggs: addOrRemoveEggs,
+    getOrCreateMember: getOrCreateMember,
+    saveMember: saveMember
 }

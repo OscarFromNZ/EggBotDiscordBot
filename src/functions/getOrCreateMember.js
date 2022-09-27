@@ -14,7 +14,7 @@ module.exports = async (client, guildId, memberId) => {
         let memberDocbase = {
             guild: guildId,
             member: memberId,
-            lastCollectedDate: undefined
+            lastCollectedDate: null
         }
         await client.db.collection("members").insertOne(memberDocbase, async function (err, res) {
             if (err) {

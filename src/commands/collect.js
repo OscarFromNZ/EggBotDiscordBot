@@ -11,9 +11,16 @@ module.exports = {
     },
 
     async execute(client, interaction) {
-        let userDoc = await client.functions.getOrCreateUser(client, interaction.user.id);
-        
-
-        await interaction.respond(interaction, `Latency is ${Date.now() - interaction.createdTimestamp}ms & API Latency is ${Math.round(client.ws.ping)}ms`);
+        let memberDoc = await client.functions.getOrCreateMember(client, interaction.guild.id, interaction.user.id);
+        console.log(memberDoc);
+        console.log(await memberDoc.lastCollectedDate + await memberDoc.lastCollectedDate < Date.now() - 43200000);
+        if (typeof memberDoc.lastCollectedDate == null || memberDoc.lastCollectedDate < Date.now() - 43200000) {
+            await client.functions.addOrRemoveEggs(client, 100, interaction.user);
+            memberDoc.lastCollectedDate = new Date();
+            await client.functions.saveMember(client, memberDoc);
+            await interaction.respond(interaction, `You have collected your daily 100 eggs successfully!`)
+        } else {
+            await interaction.respond(interaction, `You have already collected your daily eggs`);
+        }
     }
 }

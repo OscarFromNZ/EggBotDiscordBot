@@ -23,9 +23,8 @@ module.exports = {
         let user = await interaction.options.getUser('user') || interaction.user;
         
         // Loads the memberDoc from MongoDB (MongoDB is awesome ^-^);
-        let userDoc = await client.functions.getOrCreateUser(client, user.id);
-
         // Reply with the amount of messages the target user has
-        await interaction.respond(interaction, `<@${user.id}> currently has ${userDoc.eggs} eggs!`);
+        await client.functions.getOrCreateUser(client, user.id)
+        .then(userDoc => (interaction.respond(interaction, `<@${user.id}> currently has ${userDoc.eggs} eggs!`)));
     }
 }
