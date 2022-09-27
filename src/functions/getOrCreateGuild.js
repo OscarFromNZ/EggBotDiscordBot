@@ -25,6 +25,6 @@ module.exports = async (client, guildId) => {
             });
         });
     };
-
+    
     return await guildDoc;
 };
