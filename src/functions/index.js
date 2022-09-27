@@ -8,11 +8,13 @@ const getOrCreateGuild = require('./getOrCreateGuild');
 const getOrCreateUser = require('./getOrCreateUser');
 const saveGuild = require('./saveGuild');
 const saveUser = require('./saveUser');
+const addOrRemoveEggs = require('./addOrRemoveEggs');
 
 module.exports = {
     getEventFiles: getEventFiles,
     getOrCreateGuild: getOrCreateGuild,
     getOrCreateUser: getOrCreateUser,
     saveGuild: saveGuild,
-    saveUser: saveUser
+    saveUser: saveUser,
+    addOrRemoveEggs: addOrRemoveEggs
 }
