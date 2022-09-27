@@ -18,7 +18,7 @@ module.exports = {
         if (!message.guild) return;
         if (isSending == true) return;
         let x = Math.floor(Math.random() * 200) + 1;
-        if (x) {
+        if (x == 2) {
             let amount = Math.floor(Math.random() * 20) + 1;
             isSending = true;
             setTimeout(async function () {
