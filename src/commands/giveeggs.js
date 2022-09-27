@@ -32,23 +32,22 @@ module.exports = {
         let recieverDoc = await client.functions.getOrCreateUser(client, user.id);
         let giverDoc = await client.functions.getOrCreateUser(client, interaction.user.id);
 
-        let amount = await interaction.options.getNumber('eggs')
+        let amount = await interaction.options.getNumber('eggs');
 
         // Check if giver has enough money
-        if (giverDoc - amount < 0) {
+        console.log(giverDoc.eggs - amount + " is " + (giverDoc - amount < 0) + ' not as above zero')
+        if (giverDoc.eggs - amount < 0) {
             return await interaction.respond(interaction, `You do not have enough eggs to do this!`);
         };
 
-        // Adds x amount of eggs to user | Removes x amount of eggs from original user
-        recieverDoc.eggs = await recieverDoc.eggs + amount;
-        giverDoc.eggs = await giverDoc.eggs - amount;
+        await client.functions.addOrRemoveEggs(client, amount, interaction.user)
 
         // Saves
         await client.functions.saveUser(client, recieverDoc);
         await client.functions.saveUser(client, giverDoc);
 
         // Reply
-        await interaction.respond(interaction, `Done, <@${recieverDoc.id}> now has ${recieverDoc.eggs + amount} eggs & <@${giverDoc.id}> now has ${giverDoc.eggs - amount} eggs`);
+        await interaction.respond(interaction, `Done, I gave <@${recieverDoc.id}> ${amount} eggs, now has ${recieverDoc.eggs + amount} eggs & <@${giverDoc.id}> now has ${giverDoc.eggs - amount} eggs`);
         
     }
 }
