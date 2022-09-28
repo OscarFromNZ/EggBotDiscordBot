@@ -3,7 +3,7 @@
 */
 
 module.exports = {
-	data: {
+    data: {
         name: "stealeggs",
         description: "Steals eggs from a user",
         permission: 0, // Member
@@ -17,30 +17,38 @@ module.exports = {
             },
             {
                 name: "risk",
-                description: "The amount of messages to remove from the user",
+                description: "The risk level",
                 type: 10,
-                required: true
+                required: true,
+                choices: [
+                    {
+                        name: "High",
+                        value: 3
+                    },
+                    {
+                        name: "Medium",
+                        value: 2
+                    },
+                    {
+                        name: "Low",
+                        value: 1
+                    }
+                ]
             }
         ]
     },
 
     async execute(client, interaction) {
-        return;
-        // Gets the user given, either the option or the user running the command
-        let user = await interaction.options.getUser('user');
+        let victimid = await interaction.options._hoistedOptions[0].user.id;
+        let stealerid = await interaction.user.id;
+        let risklvl = await interaction.options._hoistedOptions[1].value;
+        let x = Math.floor(Math.random() * 100 * risklvl) + 1; // Amount gained/lost
+        let y = Math.floor(Math.random() * 2 * risklvl); // Whether or not you gain or lose the rob
         
-        // Loads the memberDoc from MongoDB (MongoDB is awesome ^-^);
-        let userDoc = await client.functions.getOrCreateUser(client, user.id);
-
-        // TODO add math
-
-        let amount;
-
-        // Saves
-        await client.functions.saveUser(client, userDoc);
-
-        // Reply with the amount of messages the target user has
-        await interaction.respond(interaction, `Hehe, you just stole ${amount} from <@${user.id}>`);
-        
+        if (y < 3) {
+            await interaction.editReply(`You won, would've gained ${x} eggs`);
+        } else {
+            await interaction.editReply(`You lost, would've lost ${x} eggs`);
+        }
     }
 }
