@@ -46,9 +46,9 @@ module.exports = {
         let y = Math.floor(Math.random() * 2 * risklvl); // Whether or not you gain or lose the rob
         
         if (y < 3) {
-            await interaction.editReply(`You won, would've gained ${x} eggs`);
+            await interaction.editReply(`You won, would've gained ${x} eggs | *this command is still under development and doesn't actually do anything yet*`);
         } else {
-            await interaction.editReply(`You lost, would've lost ${x} eggs`);
+            await interaction.editReply(`You lost, would've lost ${x} eggs | *this command is still under development and doesn't actually do anything yet*`);
         }
     }
 }
