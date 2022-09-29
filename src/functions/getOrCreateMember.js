@@ -23,18 +23,23 @@ module.exports = async (client, guildId, memberId) => {
             console.log("✅ Doc made");
 
             // Set the member doc again
-            memberDoc = await client.db.collection("members").findOne({
-                $and: [
-                    { guild: guildId },
-                    { member: memberId }
-                ]
+            memberDoc = await client.db.collection("members").findOne(
+                {
+                    $and: [
+                        { guild: guildId },
+                        { member: memberId }
+                    ]
+                }
+            );
+            // Return
+            return await new Promise(async (resolve, reject) => {
+                resolve(memberDoc);
             });
         });
-    };
-
-    //return await memberDoc;
-
-    return await new Promise( async (resolve, reject) => {
-        resolve(memberDoc);
-    });
+    } else {
+        // Return
+        return await new Promise(async (resolve, reject) => {
+            resolve(memberDoc);
+        });
+    }
 };

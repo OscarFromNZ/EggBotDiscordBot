@@ -11,8 +11,8 @@ module.exports = async (client, interaction) => {
 
     // Making sure nobody can have less than 0 eggs
     let userDoc = await client.functions.getOrCreateUser(client, interaction.user.id);
-    console.log(userDoc);
-    if (userDoc.eggs < 0) {
+    console.log('c' + userDoc);
+    if (await userDoc.eggs < 0) {
         userDoc.eggs = 0;
     };
     await client.functions.saveUser(client, userDoc);

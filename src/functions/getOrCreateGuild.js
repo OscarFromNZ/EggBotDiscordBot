@@ -23,12 +23,16 @@ module.exports = async (client, guildId) => {
             guildDoc = await client.db.collection("guilds").findOne({
                 id: guildId
             });
+
+            // Return
+            return await new Promise(async (resolve, reject) => {
+                resolve(guildDoc);
+            });
         });
-    };
-
-    //return await guildDoc;
-
-    return await new Promise( async (resolve, reject) => {
-        resolve(guildDoc);
-    });
+    } else {
+        // Return
+        return await new Promise(async (resolve, reject) => {
+            resolve(guildDoc);
+        });
+    }
 };

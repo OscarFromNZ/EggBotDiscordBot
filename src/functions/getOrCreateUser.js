@@ -24,12 +24,20 @@ module.exports = async (client, userId) => {
             userDoc = await client.db.collection("users").findOne(
                 { id: userId },
             );
+            console.log('a' + userDoc);
+
+            // Return
+            return await new Promise( async (resolve, reject) => {
+                resolve(userDoc);
+                console.log('b' + userDoc);
+            });
+
         });
-    };
 
-    //return await userDoc;
-
-    return await new Promise( async (resolve, reject) => {
-        resolve(userDoc);
-    });
+    } else {
+        // Return
+        return await new Promise( async (resolve, reject) => {
+            resolve(userDoc);
+        });
+    }
 };
