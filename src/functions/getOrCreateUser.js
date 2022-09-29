@@ -2,7 +2,7 @@
     * @INFO Gets of creates a user in MongoDB with id
 */
 
-module.exports = async (client, userId) => {
+module.exports = async (client, userId, callback) => {
     // Get the user doc
     let userDoc = await client.db.collection("users").findOne(
         { id: userId },
@@ -26,18 +26,24 @@ module.exports = async (client, userId) => {
             );
             console.log('a' + userDoc);
 
+            // Callback
+            if (callback) await callback(userDoc);
+
             // Return
-            return await new Promise( async (resolve, reject) => {
+            return await new Promise(async (resolve, reject) => {
                 resolve(userDoc);
                 console.log('b' + userDoc);
             });
-
         });
 
     } else {
+        // Callback
+        if (callback) await callback(userDoc);
+
         // Return
-        return await new Promise( async (resolve, reject) => {
+        return await new Promise(async (resolve, reject) => {
             resolve(userDoc);
+            console.log('b' + userDoc);
         });
     }
 };

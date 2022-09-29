@@ -2,7 +2,7 @@
     * @INFO Gets of creates a member in guild with MongoDB using the guild's id and the user's id
 */
 
-module.exports = async (client, guildId, memberId) => {
+module.exports = async (client, guildId, memberId, callback) => {
     // Get the member doc
     let memberDoc = await client.db.collection("members").findOne(
         { guild: guildId },
@@ -31,15 +31,23 @@ module.exports = async (client, guildId, memberId) => {
                     ]
                 }
             );
+            // Callback
+            if (callback) await callback(memberDoc);
+
             // Return
             return await new Promise(async (resolve, reject) => {
                 resolve(memberDoc);
+                console.log('b' + memberDoc);
             });
         });
     } else {
+        // Callback
+        if (callback) await callback(memberDoc);
+
         // Return
         return await new Promise(async (resolve, reject) => {
             resolve(memberDoc);
+            console.log('b' + memberDoc);
         });
     }
 };
