@@ -20,9 +20,9 @@ module.exports = {
             await client.functions.addOrRemoveEggs(client, 100, interaction.user);
             memberDoc.lastCollectedDate = new Date();
             await client.functions.saveMember(client, memberDoc);
-            await interaction.respond(interaction, `You have collected your daily 100 eggs successfully!`)
+            await interaction.respond(interaction, `${client.emotes.arrowUp} You have collected your daily 100 eggs successfully!`)
         } else {
-            await interaction.respond(interaction, `You have already collected your daily eggs`);
+            await interaction.respond(interaction, `${client.emotes.x} You have already collected your daily eggs`);
         }
     }
 }

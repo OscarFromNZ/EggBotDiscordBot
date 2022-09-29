@@ -37,7 +37,7 @@ module.exports = {
         // Check if giver has enough money
         console.log(giverDoc.eggs - amount + " is " + (giverDoc - amount < 0) + ' not as above zero')
         if (giverDoc.eggs - amount < 0) {
-            return await interaction.respond(interaction, `${client.emotes.warning} You do not have enough eggs to do this!`);
+            return await interaction.respond(interaction, `${client.emotes.x} You do not have enough eggs to do this!`);
         };
 
         await client.functions.addOrRemoveEggs(client, amount, interaction.user)
