@@ -78,11 +78,7 @@ let respond = async function (interaction, text) {
     if (interaction.deferred) {
         await interaction.editReply(
             {
-                content: interaction.client.promomessages[Math.floor(Math.random() * interaction.client.promomessages.length)],
-                embeds: [{
-                    description: text,
-                    color: interaction.channel.guild.members.me.displayHexColor == '#000000' ? 0x2f3136 : interaction.channel.guild.members.me.displayHexColor
-                }],
+                content: text,
                 components: [],
             }
         );
