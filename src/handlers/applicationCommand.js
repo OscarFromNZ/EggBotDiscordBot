@@ -9,6 +9,13 @@ module.exports = async (client, interaction) => {
     // Defers the interaction's reply
     await interaction.deferReply();
 
+    // Making sure nobody can have less than 0 eggs
+    let memberDoc = await client.functions.getOrCreateUser(client, interaction.user.id);
+    if (memberDoc.eggs < 0) {
+        memberDoc.eggs = 0
+    }
+    await client.functions.saveUser(client, memberDoc);
+
     // Search for the command
     const command = await client.commands.get(interaction.commandName);
 
