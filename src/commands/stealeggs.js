@@ -39,7 +39,7 @@ module.exports = {
     },
 
     async execute(client, interaction) {
-        return interaction.reply({ content: "Content under development", ephemeral: true });
+        return interaction.editReply({ content: "Content under development", ephemeral: true });
 
         let victimid = await interaction.options._hoistedOptions[0].user.id;
         let stealerid = await interaction.user.id;

@@ -87,8 +87,13 @@ let respond = async function (interaction, text) {
     if (interaction.deferred) {
         await interaction.editReply(
             {
-                content: text,
                 components: [],
+                embeds: [
+                    {
+                        description: text,
+                        color: 0xffbf66
+                    }
+                ]
             }
         );
     }
