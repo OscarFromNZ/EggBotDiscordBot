@@ -9,7 +9,7 @@ module.exports = {
         switch (interaction.type) {
             case 2: { 
                 // ApplicationCommand 
-                await require("../../src/handlers/applicationCommand")(client, interaction);
+                await require("../../src/handlers/interaction/applicationCommand")(client, interaction);
                 break;
             } case 3: {
                 // MessageComponent

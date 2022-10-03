@@ -1,0 +1,51 @@
+{
+    "name": "partner",
+    "description": "Partner",
+    "options": [
+        {
+            "name": "set",
+            "description": "Set the partnership msg settings",
+            "permission": 1, 
+            "isDangerous": false,
+            "type": 1,
+            "options": [{
+                "name": "channel",
+                "description": "The channel to send the partnership msgs",
+                "type": 7,
+                "required": false
+            }]
+        },
+        {
+            "name": "test",
+            "description": "Test the partnership msg",
+            "permission": 1, 
+            "isDangerous": false,
+            "type": 1
+        },
+        {
+            "name": "toggle",
+            "description": "Toggle partnership msgs on/off",
+            "permission": 2, 
+            "isDangerous": false,
+            "type": 1,
+            "options": [
+                {
+                    "name": "toggle",
+                    "description": "Toggle the partner message",
+                    "type": 3,
+                    "required": true,
+                    "choices": [
+                        {
+                            "name": "on",
+                            "value": "on"
+                        },
+                        {
+                            "name": "off",
+                            "value": "off"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

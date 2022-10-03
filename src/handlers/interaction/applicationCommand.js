@@ -73,7 +73,7 @@ module.exports = async (client, interaction) => {
 
     } else {
         // If it isn't dangerous, just execute the command
-        await require(`../commands/${command.name}/execute/${subcommand.name}.js`).execute(client, interaction);
+        await require(`../../commands/${command.name}/execute/${subcommand.name}.js`).execute(client, interaction);
     }
 }
 
