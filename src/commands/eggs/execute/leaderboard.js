@@ -3,13 +3,6 @@
 */
 
 module.exports = {
-    data: {
-        name: "leaderboard",
-        description: "View the leaderboard of all eggers!",
-        permission: 0, // Member
-        isDangerous: false,
-    },
-
     async execute(client, interaction) {
         var s = " "
         await client.db.collection("users").find().forEach(doc => {

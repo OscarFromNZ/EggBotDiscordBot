@@ -3,27 +3,6 @@
 */
 
 module.exports = {
-	data: {
-        name: "giveeggs",
-        description: "Give eggs to a user",
-        permission: 0, // Member
-        isDangerous: false,
-        options: [
-            {
-                name: "user",
-                description: "The user to give the eggs to",
-                type: 6,
-                required: true
-            },
-            {
-                name: "eggs",
-                description: "The amount of eggs to give to the user",
-                type: 10,
-                required: true
-            }
-        ]
-    },
-
     async execute(client, interaction) {
         // Gets the user given, either the option or the user running the command
         let user = await interaction.options.getUser('user');

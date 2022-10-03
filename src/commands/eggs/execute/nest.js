@@ -3,21 +3,6 @@
 */
 
 module.exports = {
-	data: {
-        name: "nest",
-        description: "View the nest of yourself or a user",
-        permission: 0, // Member
-        isDangerous: false,
-        options: [
-            {
-                name: "user",
-                description: "The user to check the nest of",
-                type: 6,
-                required: false
-            }
-        ]
-    },
-
     async execute(client, interaction) {
         // Gets the user given, either the option or the user running the command
         let user = await interaction.options.getUser('user') || interaction.user;

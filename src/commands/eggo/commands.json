@@ -1,0 +1,13 @@
+{
+    "name": "eggo",
+    "description": "Eggo",
+    "options": [
+        {
+            "name": "ping",
+            "description": "Pong!? Check the ping of the bot!",
+            "type": 1,
+            "permission": 0,
+            "isDangerous": false
+        }
+    ]
+}

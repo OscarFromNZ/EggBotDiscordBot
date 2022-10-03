@@ -10,7 +10,7 @@ const { Collection } = require('discord.js');
 const { Routes } = require('discord-api-types/v9');
 
 module.exports = async (client) => {
-    
+
     // Storing all functions into client.functions so I can use them easily
     client.functions = await require(`./functions/index`);
 
@@ -38,7 +38,7 @@ module.exports = async (client) => {
     client.promomessages = [
 
     ];
-    
+
 
     try {
         for (const file of client.eventFiles) {
@@ -58,10 +58,12 @@ module.exports = async (client) => {
     const commands = [];
     client.commands = new Collection();
 
-    await fs.readdirSync(`./src/commands`).forEach(file => {
-        const command = require(`./commands/${file}`);
-        commands.push(command.data);
-        client.commands.set(command.data.name, command);
+    await fs.readdirSync(`./src/commands`).forEach(category => {
+
+        const command = require(`./commands/${category}/commands.json`);
+        commands.push(command);
+        client.commands.set(command.name, command);
+
     });
 
     // Registering the commands in the client

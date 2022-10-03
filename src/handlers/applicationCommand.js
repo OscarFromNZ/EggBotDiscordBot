@@ -9,7 +9,6 @@ module.exports = async (client, interaction) => {
     // Defers the interaction's reply
     await interaction.deferReply();
 
-    // 
     await client.functions.getOrCreateUser(client, interaction.user.id, async function(userDoc) {
         console.log('c' + userDoc);
         if (await userDoc.eggs < 0) {
@@ -20,18 +19,19 @@ module.exports = async (client, interaction) => {
 
     // Search for the command
     const command = await client.commands.get(interaction.commandName);
+    const subcommand = command.options.find(x => x.name === interaction.options.getSubcommand());
 
     // Add vars (should add this to a class)
     interaction.respond = respond;
 
     // Check permissions
-    if (command.data.permission == 1 && !interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) return await interaction.respond(interaction, 'You are missing the permissions of `MANAGE_SERVER` required to run this'); // Manage Server
-    if (command.data.permission == 2 && !interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.respond(interaction, 'You are missing the permissions of `ADMINISTRATOR` required to run this'); // Admin
-    if (command.data.permission == 3 && interaction.user.id !== interaction.guild.ownerId) return await interaction.respond(interaction, 'You are missing the permissions of `SERVER_OWNER` required to run this'); // Owner
+    if (subcommand.permission == 1 && !interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuild)) return await interaction.respond(interaction, 'You are missing the permissions of `MANAGE_SERVER` required to run this'); // Manage Server
+    if (subcommand.permission == 2 && !interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.respond(interaction, 'You are missing the permissions of `ADMINISTRATOR` required to run this'); // Admin
+    if (subcommand.permission == 3 && interaction.user.id !== interaction.guild.ownerId) return await interaction.respond(interaction, 'You are missing the permissions of `SERVER_OWNER` required to run this'); // Owner
 
     // Run the command
     // Check if command is dangerous, if it is, add a verification
-    if (command.data.isDangerous) {
+    if (subcommand.isDangerous) {
         let message = await interaction.editReply({
             content: `${client.emotes.warning} This command is potientially dangerous, are you sure you want to run it?`,
             components: [
@@ -73,7 +73,7 @@ module.exports = async (client, interaction) => {
 
     } else {
         // If it isn't dangerous, just execute the command
-        await command.execute(client, interaction);
+        await require(`../commands/${command.name}/execute/${subcommand.name}.js`).execute(client, interaction);
     }
 }
 

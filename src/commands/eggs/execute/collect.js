@@ -3,13 +3,6 @@
 */
 
 module.exports = {
-	data: {
-        name: "collect",
-        description: "Collect your daily eggs!",
-        permission: 0, // Member
-        isDangerous: false,
-    },
-
     async execute(client, interaction) {
         let memberDoc = await client.functions.getOrCreateMember(client, interaction.guild.id, interaction.user.id);
         /*

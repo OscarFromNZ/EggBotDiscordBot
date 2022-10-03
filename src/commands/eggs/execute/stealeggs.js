@@ -3,41 +3,6 @@
 */
 
 module.exports = {
-    data: {
-        name: "stealeggs",
-        description: "Steals eggs from a user",
-        permission: 0, // Member
-        isDangerous: false,
-        options: [
-            {
-                name: "user",
-                description: "The user to remove the messages from",
-                type: 6,
-                required: true
-            },
-            {
-                name: "risk",
-                description: "The risk level",
-                type: 10,
-                required: true,
-                choices: [
-                    {
-                        name: "High",
-                        value: 3
-                    },
-                    {
-                        name: "Medium",
-                        value: 2
-                    },
-                    {
-                        name: "Low",
-                        value: 1
-                    }
-                ]
-            }
-        ]
-    },
-
     async execute(client, interaction) {
         return interaction.editReply({ content: "Content under development", ephemeral: true });
 

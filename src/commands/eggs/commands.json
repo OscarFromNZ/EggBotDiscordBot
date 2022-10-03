@@ -1,0 +1,92 @@
+{
+    "name": "eggs",
+    "description": "Eggs",
+    "options": [
+        {
+            "name": "collect",
+            "description": "Collect your daily eggs!",
+            "permission": 0, 
+            "isDangerous": false,
+            "type": 1
+        },
+        {
+            "name": "giveeggs",
+            "description": "Collect your daily eggs!",
+            "permission": 0, 
+            "isDangerous": false,
+            "type": 1,
+            "options": [
+                {
+                    "name": "user",
+                    "description": "The user to give the eggs to",
+                    "type": 6,
+                    "required": true
+                },
+                {
+                    "name": "eggs",
+                    "description": "The amount of eggs to give to the user",
+                    "type": 10,
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "leaderboard",
+            "description": "View the leaderboard of all eggers!",
+            "permission": 0, 
+            "isDangerous": false,
+            "type": 1
+        },
+        {
+            "name": "nest",
+            "description": "View your nest or the nest of another user",
+            "permission": 0, 
+            "isDangerous": false,
+            "type": 1,
+            "options": [
+                {
+                    "name": "user",
+                    "description": "The user to check the nest of",
+                    "type": 6,
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "stealeggs",
+            "description": "Steal eggs from another user",
+            "permission": 0, 
+            "isDangerous": false,
+            "type": 1,
+            "options": [
+                {
+                    "name": "user",
+                    "description": "The user to remove the messages from",
+                    "type": 6,
+                    "required": true
+                },
+                {
+                    "name": "risk",
+                    "description": "The risk level",
+                    "type": 10,
+                    "required": true,
+                    "choices": [
+                        {
+                            "name": "High",
+                            "value": 3
+                        },
+                        {
+                            "name": "Medium",
+                            "value": 2
+                        },
+                        {
+                            "name": "Low",
+                            "value": 1
+                        }
+                    ]
+                }
+            ]
+        }
+
+    ]
+}
