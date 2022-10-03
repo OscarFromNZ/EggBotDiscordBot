@@ -4,10 +4,17 @@
 
 module.exports = {
     async execute(client, interaction) {
-        var s = " "
+        var s = " ";
+        let arr = [];
+        
         await client.db.collection("users").find().forEach(doc => {
-            s = s + " <@" + doc.id + ">" + " " + doc.eggs + " eggs\n"
-        })//.then(interaction.editReply({ content: s.toString() }));
+            arr.push(doc);
+        });
+        arr.sort((a, b) => b.eggs - a.eggs);
+
+        arr.forEach(user => {
+            s = s + " <@" + user.id + ">" + " " + user.eggs + " eggs\n";
+        });
 
         await interaction.respond(interaction, s.toString());
     }
