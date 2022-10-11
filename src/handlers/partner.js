@@ -7,9 +7,11 @@ module.exports = async (client, message) => {
     let channelId = await message.channel.id;
     let guildDoc = await client.functions.getOrCreateGuild(client, message.guild.id);
 
-    if (guildDoc.partnerChannelId === channelId) {
-        await message.channel.send('partner yes');
-    } else {
-        return;
+    if (guildDoc.partnerToggle === "on" || !guildDoc.partnerToggle) {
+        if (guildDoc.partnerChannelId === channelId) {
+            await message.channel.send('partner yes');
+        } else {
+            return;
+        }
     }
 }
