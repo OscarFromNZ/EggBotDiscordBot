@@ -7,7 +7,7 @@ const { PermissionsBitField, ComponentType } = require('discord.js');
 
 module.exports = async (client, interaction) => {
     // Defers the interaction's reply
-    await interaction.deferReply();
+    //await interaction.deferReply();
 
     await client.functions.getOrCreateUser(client, interaction.user.id, async function(userDoc) {
         console.log('c' + userDoc);
@@ -86,6 +86,18 @@ module.exports = async (client, interaction) => {
 let respond = async function (interaction, text) {
     if (interaction.deferred) {
         await interaction.editReply(
+            {
+                components: [],
+                embeds: [
+                    {
+                        description: text,
+                        color: 0xffbf66
+                    }
+                ]
+            }
+        );
+    } else {
+        await interaction.reply(
             {
                 components: [],
                 embeds: [
