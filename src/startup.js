@@ -2,7 +2,6 @@
     * @INFO This is the basic init function, it defines a few variables (I should really be using more OOP) and registers slash commands at the bottom
 */
 
-
 var MongoClient = require("mongodb").MongoClient;
 let fs = require('fs');
 const { REST } = require('@discordjs/rest');

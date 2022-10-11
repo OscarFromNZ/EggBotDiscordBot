@@ -4,11 +4,8 @@
 */
 
 module.exports = async (client, message) => {
-    console.log('test');
     let channelId = await message.channel.id;
-    console.log('test');
-    let guildDoc = await client.functions.getOrCreateGuild(client, message.guild);
-    console.log('test');
+    let guildDoc = await client.functions.getOrCreateGuild(client, message.guild.id);
 
     if (guildDoc.partnerChannelId === channelId) {
         await message.channel.send('partner yes');
