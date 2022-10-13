@@ -10,6 +10,6 @@ module.exports = {
         // Loads the memberDoc from MongoDB (MongoDB is awesome ^-^);
         // Reply with the amount of messages the target user has
         await client.functions.getOrCreateUser(client, user.id)
-        .then(userDoc => (interaction.respond(interaction, `${client.emotes.sparkles} <@${user.id}> currently has ${userDoc.eggs} eggs!`)));
+        .then(userDoc => (interaction.respond(interaction, `${client.emotes.sparkles} <@${user.id}> currently has ${userDoc.eggs} eggs and ${userDoc.soups} soups!`)));
     }
 }
