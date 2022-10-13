@@ -38,6 +38,13 @@
             "type": 1
         },
         {
+            "name": "cook",
+            "description": "Cook up some egg soup! (Requires 150 eggs)",
+            "permission": 0, 
+            "isDangerous": false,
+            "type": 1
+        },
+        {
             "name": "nest",
             "description": "View your nest or the nest of another user",
             "permission": 0, 

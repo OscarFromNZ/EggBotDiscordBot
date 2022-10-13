@@ -9,6 +9,8 @@ module.exports = {
         console.log(memberDoc);
         console.log(await memberDoc.lastCollectedDate + await memberDoc.lastCollectedDate < Date.now() - 43200000);
         */
+       memberDoc.lastCollectedDate === null ? console.log('true') : memberDoc.lastCollectedDate = null ;
+
         if (typeof memberDoc.lastCollectedDate == null || memberDoc.lastCollectedDate < Date.now() - 43200000) {
             await client.functions.addOrRemoveEggs(client, 100, interaction.user);
             memberDoc.lastCollectedDate = new Date();
