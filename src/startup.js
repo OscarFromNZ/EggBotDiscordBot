@@ -58,8 +58,10 @@ module.exports = async (client) => {
     await fs.readdirSync(`./src/commands`).forEach(category => {
 
         const command = require(`./commands/${category}/commands.json`);
-        commands.push(command);
-        client.commands.set(command.name, command);
+        if (command.name === 'eggs') {
+            commands.push(command);
+            client.commands.set(command.name, command);
+        }
 
     });
 
