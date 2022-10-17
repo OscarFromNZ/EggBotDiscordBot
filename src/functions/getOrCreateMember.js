@@ -3,6 +3,7 @@
 */
 
 module.exports = async (client, guildId, memberId, callback) => {
+    console.log(guildId, memberId, callback);
     // Get the member doc
     let memberDoc = await client.db.collection("members").findOne(
         { guild: guildId },
@@ -32,12 +33,20 @@ module.exports = async (client, guildId, memberId, callback) => {
                 }
             );
             // Callback
-            if (callback) await callback(memberDoc);
+            
+            if (callback) await callback({
+                guild: guildId,
+                member: memberId,
+                lastCollectedDate: null
+            });
 
             // Return
             return await new Promise(async (resolve, reject) => {
-                resolve(memberDoc);
-                console.log('b' + memberDoc);
+                resolve({
+                    guild: guildId,
+                    member: memberId,
+                    lastCollectedDate: null
+                });
             });
         });
     } else {

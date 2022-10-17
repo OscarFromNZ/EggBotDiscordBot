@@ -24,18 +24,21 @@ module.exports = async (client, userId, callback) => {
             userDoc = await client.db.collection("users").findOne(
                 { id: userId },
             );
-            console.log('a' + userDoc);
 
             // Callback
-            if (callback) await callback(userDoc);
+            if (callback) await callback({
+                id: userId,
+                eggs: 0,
+            });
 
             // Return
             return await new Promise(async (resolve, reject) => {
-                resolve(userDoc);
-                console.log('b' + userDoc);
+                resolve({
+                    id: userId,
+                    eggs: 0,
+                });
             });
         });
-
     } else {
         // Callback
         if (callback) await callback(userDoc);
