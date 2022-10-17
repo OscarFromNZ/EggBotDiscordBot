@@ -25,12 +25,15 @@ module.exports = async (client, guildId, callback) => {
             });
 
             // Callback
-            if (callback) await callback(guildDoc);
+            if (callback) await callback({
+                id: guildId,
+            });
 
             // Return
             return await new Promise(async (resolve, reject) => {
-                resolve(guildDoc);
-                console.log('b' + guildDoc);
+                resolve({
+                    id: guildId,
+                });
             });
         });
     } else {
