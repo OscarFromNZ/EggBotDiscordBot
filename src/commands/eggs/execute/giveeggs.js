@@ -6,10 +6,14 @@ module.exports = {
     async execute(client, interaction) {
         // Gets the user given, either the option or the user running the command
         let user = await interaction.options.getUser('user');
-        
+
         // Loads the userDoc from MongoDB (MongoDB is awesome ^-^);
         let recieverDoc = await client.functions.getOrCreateUser(client, user.id);
         let giverDoc = await client.functions.getOrCreateUser(client, interaction.user.id);
+
+        if (recieverDoc == undefined || giverDoc === undefined) {
+            return interaction.respond(interaction, `${client.emotes.x} An error occured, please try again`);
+        }
 
         let amount = await interaction.options.getNumber('eggs');
 
@@ -19,14 +23,17 @@ module.exports = {
             return await interaction.respond(interaction, `${client.emotes.x} You do not have enough eggs to do this!`);
         };
 
-        await client.functions.addOrRemoveEggs(client, amount, interaction.user)
+        // Adding/Removing
+        recieverDoc.eggs = recieverDoc.eggs + amount;
+        giverDoc.eggs = giverDoc.eggs - amount;
 
         // Saves
         await client.functions.saveUser(client, recieverDoc);
         await client.functions.saveUser(client, giverDoc);
 
         // Reply
-        await interaction.respond(interaction, `${client.emotes.check} Done, I gave <@${recieverDoc.id}> ${amount} eggs, now has ${recieverDoc.eggs + amount} eggs & <@${giverDoc.id}> now has ${giverDoc.eggs - amount} eggs`);
-        
+        await interaction.respond(interaction, `${client.emotes.check} Done, I gave <@${recieverDoc.id}> ${amount} eggs, now has ${recieverDoc.eggs} eggs & <@${giverDoc.id}> now has ${giverDoc.eggs} eggs`);
+
+
     }
 }
