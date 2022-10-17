@@ -7,10 +7,9 @@ const { PermissionsBitField, ComponentType } = require('discord.js');
 
 module.exports = async (client, interaction) => {
     // Defers the interaction's reply
-    //await interaction.deferReply();
+    await interaction.deferReply();
 
     await client.functions.getOrCreateUser(client, interaction.user.id, async function(userDoc) {
-        console.log('c' + userDoc);
         if (await userDoc.eggs < 0) {
             userDoc.eggs = 0;
         };
@@ -34,6 +33,8 @@ module.exports = async (client, interaction) => {
     // Run the command
     // Check if command is dangerous, if it is, add a verification
     if (subcommand.isDangerous) {
+        await require(`../../commands/${command.name}/execute/${subcommand.name}.js`).execute(client, interaction);
+        /*
         let message = await interaction.editReply({
             content: `${client.emotes.warning} This command is potientially dangerous, are you sure you want to run it?`,
             components: [
@@ -72,6 +73,7 @@ module.exports = async (client, interaction) => {
                 await i.reply({ content: `${client.emotes.shush} These buttons aren't for you, <@${i.user.id}>`, ephemeral: true});
             }
         });
+        */
 
     } else {
         // If it isn't dangerous, just execute the command
