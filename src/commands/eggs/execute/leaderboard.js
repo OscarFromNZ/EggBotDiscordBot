@@ -12,10 +12,16 @@ module.exports = {
         });
         arr.sort((a, b) => b.eggs - a.eggs);
 
-        arr.forEach(user => {
-            s = s + " <@" + user.id + ">" + " " + user.eggs + " eggs\n";
-        });
-
-        await interaction.respond(interaction, s.toString());
+        //var step = 0;
+        for (let i = 0; i < 11; i++) {
+            if (i < 10)  {
+                console.log(`looping through users, ${i}`);
+                let userObj = await client.users.fetch(arr[i].id);
+                s = s + "`" + i + "` **" + userObj.username + "** with " + arr[i].eggs + " eggs\n";
+            } else {
+                console.log('responding');
+                await interaction.respond(interaction, s.toString());
+            }
+        }
     }
 }
