@@ -13,12 +13,12 @@ module.exports = {
            //memberDoc.lastCollectedDate === null ? console.log('true') : memberDoc.lastCollectedDate = Date.now() ;
     
             if (typeof memberDoc.lastCollectedDate == null || memberDoc.lastCollectedDate < Date.now() - 43200000) {
-                await client.functions.addOrRemoveEggs(client, 100, interaction.user);
+                memberDoc.eggs = memberDoc.eggs === undefined ? 0 : memberDoc.eggs + 100;
                 memberDoc.lastCollectedDate = new Date();
                 await client.functions.saveMember(client, memberDoc);
                 await interaction.respond(interaction, `${client.emotes.arrowUp} You have collected your daily 100 eggs successfully!`)
             } else {
-                await interaction.respond(interaction, `${client.emotes.x} You have already collected your daily eggs for this server`);
+                await interaction.respond(interaction, `${client.emotes.x} **Oh no...** you have already collected your daily eggs for this server :c`);
             }
         })
     }

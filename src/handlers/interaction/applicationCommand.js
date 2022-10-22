@@ -17,7 +17,7 @@ module.exports = async (client, interaction) => {
     });
 
     // Search for the command
-    const command = await client.commands.get(interaction.commandName);
+    const command = await client.commandFiles.get(interaction.commandName);
     const subcommand = command.options.find(x => x.name === interaction.options.getSubcommand());
 
     if (command.name !== 'eggs') return await interaction.reply({ content: 'Command temporarily deprecated', ephemeral: true});
