@@ -32,7 +32,7 @@ module.exports = {
         await client.functions.saveUser(client, giverDoc);
 
         // Reply
-        await interaction.respond(interaction, `${client.emotes.check} Done, I gave <@${recieverDoc.id}> ${amount} eggs, now has ${recieverDoc.eggs} eggs & <@${giverDoc.id}> now has ${giverDoc.eggs} eggs`);
+        await interaction.respond(interaction, `${client.emotes.check} Done, I gave <@${recieverDoc.id}> ${amount} eggs they now have ${recieverDoc.eggs} eggs & <@${giverDoc.id}> has ${giverDoc.eggs} eggs`);
 
 
     }
