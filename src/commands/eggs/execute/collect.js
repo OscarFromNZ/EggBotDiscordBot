@@ -10,8 +10,8 @@ module.exports = {
             await client.functions.getOrCreateUser(client, interaction.user.id, async function(userDoc) {
                 console.log('after getting, memberdoc is ' + memberDoc);
         
-                if (typeof memberDoc.lastCollectedDate == null || memberDoc.lastCollectedDate < Date.now() - 43200000) {
-                    userDoc.eggs = userDoc.eggs === undefined ? 0 : userDoc.eggs + 100 + userDoc.soups * 10;
+                if (typeof memberDoc.lastCollectedDate == undefined || memberDoc.lastCollectedDate < Date.now() - 43200000) {
+                    userDoc.eggs = userDoc.eggs == undefined ? 100 : userDoc.eggs + 100 + userDoc.soups * 10;
                     memberDoc.lastCollectedDate = new Date();
                     await client.functions.saveMember(client, memberDoc);
                     await client.functions.saveUser(client, userDoc);
