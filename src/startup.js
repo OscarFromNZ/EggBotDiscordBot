@@ -72,7 +72,7 @@ module.exports = async (client) => {
     (async () => {
         try {
             await rest.put(
-                Routes.applicationCommands('927286445671055370'), {
+                Routes.applicationCommands(process.env.DEV_ID), {
                 body: commands
             },
             );
