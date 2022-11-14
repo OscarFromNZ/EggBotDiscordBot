@@ -33,7 +33,5 @@ module.exports = {
 
         // Reply
         await interaction.respond(interaction, `${client.emotes.check} Done, I gave <@${recieverDoc.id}> ${amount} eggs they now have ${recieverDoc.eggs} eggs & <@${giverDoc.id}> has ${giverDoc.eggs} eggs`);
-
-
     }
 }
