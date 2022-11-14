@@ -41,8 +41,8 @@ module.exports = async (client, message) => {
             let hasCollected = false
             collector.on('collect', async (i) => {
                 if (hasCollected == false) {
-                    await client.functions.addOrRemoveEggs(client, amount, i.user);
-                    let userDoc = await client.functions.getOrCreateUser(client, i.user.id);
+                    userDoc.eggs = await userDoc.eggs + amount;
+                    await client.functions.saveUser(client, userDoc);
                     await i.reply(`<@${i.user.id}> got the eggs! They now have ${userDoc.eggs} eggs!`)
                     hasCollected = true;
                 } else {
